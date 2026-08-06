@@ -1,0 +1,18 @@
+/* Local font faces — latin subsets only (files present in assets/fonts) */
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 200 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url('../fonts/bricolage-grotesque/3y9H6as8bTXq_nANBjzKo3IeZx8z6up5BeSl5jBNz_19PpbpMXuECpwUxJBOm_OJWiawA1Xp.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('../fonts/source-sans-3/nwpStKy2OAdR1K-IwhWudF-R3w8aZQ.woff2') format('woff2');
+}

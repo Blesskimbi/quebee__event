@@ -1,0 +1,113 @@
+/* ============================================================
+   G & G Meals Atlanta — homepage overrides
+   Loaded last: fixes + brand polish on top of the Elementor export
+   ============================================================ */
+@import url("site-footer.css");
+
+/* ---- Critical fix: Elementor scroll-reveal safety net ----
+   Elements with .elementor-invisible start at visibility:hidden
+   and are only revealed by Elementor's JS animation watcher.
+   If that JS doesn't fire (offline export, blocked script, timing),
+   whole sections (hero copy, buttons, cards) stay hidden forever.
+   Force them visible; the fade/slide keyframes still play normally
+   since those are driven by opacity/transform, not visibility. */
+.elementor-invisible {
+  visibility: visible !important;
+}
+
+/* ---- Brand palette: retint the theme's own CSS variables ----
+   The whole Caterix/Elementor build is themed off these custom
+   properties, so nudging them re-skins buttons, icons, badges,
+   accordions, hovers etc. sitewide without touching markup.
+   Values stay within the same lightness band as the originals so
+   existing white-on-accent / dark-on-light contrast pairs stay
+   legible — this is a hue shift toward the brand gold/brown, not
+   a full-contrast swap to the saturated brand yellow. */
+body {
+  --e-global-color-primary: #2c1f14;
+  --e-global-color-secondary: #ffffff;
+  --e-global-color-text: #6b5c52;
+  --e-global-color-accent: #cd9f3d;
+  --e-global-color-accentsecondary: transparent;
+  --e-global-color-background: #fbf3e7;
+}
+
+/* ---- Layout safety net ---- */
+html, body { overflow-x: hidden; max-width: 100%; }
+
+/* ---- Header logo: fill the circular badge ---- */
+.ata-site-logo-img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+}
+
+@media (max-width: 767px) {
+  .elementor-element-9d0d12b { flex: 0 0 auto; }
+}
+
+/* ---- "Book Now" CTA: keep it visible on tablet/mobile instead of
+   disappearing (previously only reachable via the hamburger menu) ---- */
+.elementor-element-3259c14.elementor-hidden-tablet,
+.elementor-element-3259c14.elementor-hidden-mobile {
+  display: flex !important;
+}
+
+@media (max-width: 1024px) {
+  .elementor-element-3259c14 { margin-left: auto; }
+  .elementor-element-3259c14 .ekit_creative_button_text { display: none; }
+  .elementor-element-3259c14 .ekit-btn-wraper a.ekit_creative_button {
+    padding: 0 !important;
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .elementor-element-3259c14 .ekit_creative_button_icon_wrapper svg { margin: 0; }
+}
+
+/* ---- "Trusted by" avatar trio: the source photos are catering
+   shots, not headshots — style them as a tidy overlapping circular
+   badge stack (white ring + shadow) instead of small, odd-looking
+   square food-photo thumbnails ---- */
+.elementor-widget-image:has(> img[src*="author-"]),
+.elementor-widget-image:has(> .elementor-widget-container > img[src*="author-"]) {
+  margin-left: -14px;
+  position: relative;
+}
+
+.elementor-widget-image:has(> img[src*="author-"]):first-child,
+.elementor-widget-image:has(> .elementor-widget-container > img[src*="author-"]):first-child {
+  margin-left: 0;
+}
+
+.elementor-widget-image img[src*="author-"] {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50%;
+  border: 2.5px solid #fff;
+  box-shadow: 0 3px 10px rgba(44, 31, 20, 0.28);
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+/* ---- Buttons: consistent, tactile hover lift ---- */
+.ekit_creative_button,
+.btn-default {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease !important;
+}
+
+.ekit_creative_button:hover,
+.btn-default:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(44, 31, 20, 0.22);
+}
+
+/* Blog "read more" + link hovers pick up the brand gold */
+.elementskit-btn:hover,
+.entry-title a:hover { color: var(--e-global-color-accent) !important; }
+
+/* ---- Prevent iOS auto-zoom on form inputs ---- */
+input, select, textarea { font-size: 16px; }
