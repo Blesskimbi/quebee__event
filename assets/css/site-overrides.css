@@ -175,3 +175,38 @@ input, select, textarea { font-size: 16px; }
   background-color: rgba(20, 16, 12, 0.55) !important;
   backdrop-filter: blur(2px);
 }
+
+/* ---- Preloader wordmark ----
+   Replaces the generic theme loader.svg with the Quebee Event
+   text logo so the brand name shows while the page loads. */
+#loading-icon .gg-preloader-text {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--gg-display, "Bricolage Grotesque", sans-serif);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 6vw, 2.9rem);
+  line-height: 1.05;
+  color: var(--gg-brown, #2c1f14);
+  letter-spacing: 0.01em;
+  animation: gg-preloader-pulse 1.4s ease-in-out infinite;
+}
+
+#loading-icon .gg-preloader-text small {
+  font-size: 0.34em;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gg-yellow, #cd9f3d);
+  margin-top: 0.5em;
+  padding-left: 0.42em;
+}
+
+@keyframes gg-preloader-pulse {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50% { opacity: 0.62; transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #loading-icon .gg-preloader-text { animation: none; }
+}
