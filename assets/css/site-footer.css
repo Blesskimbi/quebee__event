@@ -71,6 +71,13 @@ a:hover .gg-logo-mark {
   margin-top: 0.15rem;
 }
 
+/* Text-only wordmark — used while there's no image logo yet */
+.gg-logo-text-solo { font-size: 1.35rem; }
+.gg-logo-text-solo small { font-size: 0.72rem; }
+
+.gg-logo-text-lg { font-size: 1.7rem; }
+.gg-logo-text-lg small { font-size: 0.82rem; }
+
 /* Homepage header logo */
 .ata-site-logo-container .gg-logo-mark {
   vertical-align: middle;
@@ -195,6 +202,3 @@ a:hover .gg-logo-mark {
 
 .gg-footer-credit a:hover { color: var(--gg-yellow); }
 
-@media (max-width: 820px) {
-  .gg-logo-text { display: none; }
-}

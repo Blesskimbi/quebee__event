@@ -111,3 +111,67 @@ html, body { overflow-x: hidden; max-width: 100%; }
 
 /* ---- Prevent iOS auto-zoom on form inputs ---- */
 input, select, textarea { font-size: 16px; }
+
+/* ---- Hero background video ----
+   Sits behind the hero copy/stats, on top of the CSS background-image
+   (post-12.css), which still serves as the poster/fallback if video
+   playback is blocked. The clip is a vertical Instagram reel, so it's
+   covered + anchored toward the top to keep the action in frame. */
+.elementor-element-2f133a7 { position: relative; }
+.elementor-element-2f133a7 > .e-con-inner { position: relative; z-index: 2; }
+
+.gg-hero-video-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.gg-hero-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 22%;
+}
+
+.gg-hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, rgba(25, 30, 36, 0.84) 0%, rgba(25, 30, 36, 0.52) 48%, rgba(25, 30, 36, 0.34) 100%);
+}
+
+@media (max-width: 767px) {
+  .gg-hero-video { object-position: center 12%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gg-hero-video { display: none; }
+}
+
+/* ---- "How It Works" step cards: darken the bottom of each photo
+   so the white step title/copy (and the "Step 0N" badge) stay
+   legible no matter how bright the underlying photo is. ---- */
+.how-work-item {
+  position: relative;
+  border-radius: 20px;
+}
+
+.how-work-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(20, 16, 12, 0) 30%, rgba(20, 16, 12, 0.82) 100%);
+  pointer-events: none;
+}
+
+.how-work-item-content {
+  position: relative;
+  z-index: 1;
+}
+
+.how-work-item .ekit-badge {
+  background-color: rgba(20, 16, 12, 0.55) !important;
+  backdrop-filter: blur(2px);
+}
